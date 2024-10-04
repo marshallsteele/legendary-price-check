@@ -1,0 +1,128 @@
+.pcGridContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.pcItemCardContainer {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    border: 10px solid var(--accent-colour);
+    border-radius: 20px;
+    background-color: var(--off-white);
+}
+
+.pcClickable:hover {
+    cursor: pointer;
+    color: var(--off-white);
+    background-color: var(--accent-colour);
+}
+
+.pcLegendaryListContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    overflow: scroll;
+
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+
+    background-color: var(--accent-colour);
+    color: var(--off-white);
+}
+
+.pcLegendaryListItemContainer {
+    background-color: var(--off-white);
+    color: var(--accent-colour);
+    border-radius: 10px;
+    margin: 5px 0px 5px 0px;
+
+    border: 3px solid var(--off-white);
+    border-radius: 10px;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.pcLegendaryListItemIcon {
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.pcLegendaryListItemName {
+    display: flex;
+    align-items: center;
+    margin: 0;
+    flex-grow: 1;
+}
+
+.pcGenButtonContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent-colour);
+}
+
+.pcGenButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 98%;
+    height: 47%;
+    
+    border: 3px solid var(--off-white);
+    border-radius: 10px;
+
+    background-color: var(--off-white);
+    color: var(--accent-colour);
+
+    font-size: 75pt;
+}
+
+@media screen and (min-width: 601px) {
+    .pcItemCardContainer {
+        width: 300px;
+        height: 450px;
+        margin: 30px;
+    }
+
+    .pcLegendaryListItemName {
+        font-size: 25px;
+    }
+
+    .pcLegendaryListItemIcon {
+        width: 64px;
+    }
+
+    .pcPlusIcon {
+        width: 150px;
+    }
+  }
+  
+  @media screen and (max-width: 600px) {
+    .pcItemCardContainer {
+        width: 200px;
+        height: 300px;
+        margin: 15px;
+    }
+
+    .pcLegendaryListItemName {
+        font-size: 15px;
+    }
+
+    .pcLegendaryListItemIcon {
+        width: 45px;
+    }
+
+    .pcPlusIcon {
+        width: 100px;
+    }
+  }
