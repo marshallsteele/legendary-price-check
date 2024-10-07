@@ -2,11 +2,12 @@
   "name": "legendary-price-check",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://marshallsteele.github.io/legendary-price-check/",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d dist",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
     "preview": "vite preview"
