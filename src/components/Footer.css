@@ -1,3 +1,8 @@
 .footerContainer {
+    padding: 0px 20px 20px;
     color: var(--off-white);
+}
+
+.footerDisclaimer {
+    margin: 0px;
 }
