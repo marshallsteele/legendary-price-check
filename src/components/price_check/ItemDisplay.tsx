@@ -6,7 +6,7 @@ interface ItemDisplayProps {
     itemName:string
 }
 
-interface ItemPrice {
+interface TPPrices {
     id:number,
     whitelisted: boolean,
     buys: {
@@ -19,18 +19,39 @@ interface ItemPrice {
     }
 }
 
+interface ItemValue {
+    gold:number,
+    silver:number,
+    copper:number
+}
+
 const tpLookupURL = "https://api.guildwars2.com/v2/commerce/prices"
+const DEFAULT_PERCENTAGE = 85;
+
+function calculateItemValue(price:number): ItemValue {
+    price = Math.round(price);
+    var copper:number = price % 100;
+    price = Math.floor(price / 100)
+    var silver:number = price % 100;
+    price = Math.floor(price / 100);
+    var gold:number = price;
+    
+    return {copper:copper, silver:silver, gold:gold};
+}
 
 function ItemDisplay ({ handleCloseItemCard, itemId, itemName }: ItemDisplayProps) {
     const [isLoading, setIsLoading] = useState(true);
-    const [itemPrice, setItemPrice] = useState<ItemPrice | null>(null);
+    const [tPPrices, setTPPrices] = useState<TPPrices | null>(null);
+    const [itemValue, setItemValue] = useState<ItemValue | null>(null);
+    const [pricePercentage, setPricePercentage] = useState<number>(DEFAULT_PERCENTAGE);
+
 
     async function handleFetchAPIData(itemId:number) {
         setIsLoading(true);
         fetch(tpLookupURL + "/" + itemId)
             .then(response => response.json())
             .then(data => {
-                setItemPrice(data);
+                setTPPrices(data);
                 setIsLoading(false);
             })
     }
@@ -39,14 +60,28 @@ function ItemDisplay ({ handleCloseItemCard, itemId, itemName }: ItemDisplayProp
         handleFetchAPIData(itemId);
     }, []);
 
+    useEffect(() => {
+        if (tPPrices) setItemValue(calculateItemValue(tPPrices.sells.unit_price * (pricePercentage / 100)));
+    }, [tPPrices]);
+
     return (
-        <div onClick={handleCloseItemCard} className="pcItemCardContainer pcClickable">
+        <div onClick={handleCloseItemCard} className="pcItemCardContainer">
             { isLoading ?
-                <h1>Loading</h1>
+                <h2>Loading</h2>
                 :
-                    <div>
-                        <h1>{itemName}</h1>
-                        <h1>{itemPrice ? itemPrice.buys.unit_price : "Error Loading Price"}</h1>
+                    <div className="pcItemDisplayContainer">
+                        <h2 className="pcItemDisplayItemName">{itemName}</h2>
+                        <p className="pcItemDisplayPercentage">{pricePercentage}%</p>
+                        <div>
+                            { itemValue ?  
+                                <div className="pcItemValueContainer">
+                                    <p className="pcItemDisplayValueGold">{itemValue.gold} <span style={{color:'#EDAC4A'}}>g</span></p>
+                                    <p className="pcItemDisplayValueSilver">{itemValue.silver} <span style={{color:'#CACACA'}}>s</span></p>
+                                    <p className="pcItemDisplayValueCopper">{itemValue.copper} <span style={{color:'#D16630'}}>c</span></p>
+                                </div>
+                            : 
+                                "Error Loading Price"}
+                        </div>
                     </div>
             }
         </div>
