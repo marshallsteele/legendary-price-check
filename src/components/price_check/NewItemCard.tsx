@@ -10,7 +10,7 @@ interface NewItemCardProps {
 
 function NewItemCard ({ cardClicked }: NewItemCardProps) {
     return (
-        <div onClick={cardClicked} className="pcItemCardContainer pcClickable">
+        <div onClick={cardClicked} className="pcItemCardContainer pcCardContainer pcClickable">
             <img className="pcPlusIcon" src={plusCircle} alt="Plus Icon" />
         </div>
     )

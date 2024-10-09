@@ -69,31 +69,51 @@ function ItemDisplay ({ handleCloseItemCard, itemId, itemName }: ItemDisplayProp
     }, [tPPrices, pricePercentage]);
 
     return (
-        <div className="pcItemCardContainer">
+        <div className="pcCardContainer">
+            <div style={{display:"none"}} className="pcCardTabsContainer">
+                <div className="pcCardTab active">
+                    Depth: 1
+                </div>
+                <div className="pcCardTab active">
+                    Depth: 2
+                </div>
+                <div className="pcCardTab active">
+                    Depth: 5
+                </div>
+            </div>
+            <div className="pcItemCardContainer">
             { isLoading ?
-                <h2>Loading</h2>
+                <div className="pcItemDisplayContainer">
+                    <h2>Loading</h2>
+                </div>
                 :
-                    <div className="pcItemDisplayContainer">
-                        <h2 className="pcItemDisplayItemName">{itemName}</h2>
-                        <p className="pcItemDisplayPercentage">{pricePercentage}%</p>
-                        <input className="percentageSlider" 
-                        type="range" min="0" max="100" value={pricePercentage} step="1" 
-                        onInput={handlePercentageChange}
-                        onChange={handlePercentageChange}/>
-                        
-                        <div>
-                            { itemValue ?  
-                                <div className="pcItemValueContainer">
-                                    <p className="pcItemDisplayValueGold">{itemValue.gold} <span style={{color:'#EDAC4A'}}>g</span></p>
-                                    <p className="pcItemDisplayValueSilver">{itemValue.silver} <span style={{color:'#CACACA'}}>s</span></p>
-                                    <p className="pcItemDisplayValueCopper">{itemValue.copper} <span style={{color:'#D16630'}}>c</span></p>
-                                </div>
-                            : 
-                                "Error Loading Price"}
-                        </div>
+                <div className="pcItemDisplayContainer">
+                    <div className="pcItemDisplayButtonsContainer">
+                        <button onClick={() => handleFetchAPIData(itemId)} className="pcItemDisplayButton">R</button>
+                        <button onClick={handleCloseItemCard} className="pcItemDisplayButton">X</button>
                     </div>
+                    <h2 className="pcItemDisplayItemName">{itemName}</h2>
+                    <p className="pcItemDisplayPercentage">{pricePercentage}%</p>
+                    <input className="percentageSlider" 
+                    type="range" min="0" max="100" value={pricePercentage} step="1" 
+                    onInput={handlePercentageChange}
+                    onChange={handlePercentageChange}/>
+                    
+                    <div>
+                        { itemValue ?  
+                            <div className="pcItemValueContainer">
+                                <p className="pcItemDisplayValueGold">{itemValue.gold} <span style={{color:'#EDAC4A'}}>g</span></p>
+                                <p className="pcItemDisplayValueSilver">{itemValue.silver} <span style={{color:'#CACACA'}}>s</span></p>
+                                <p className="pcItemDisplayValueCopper">{itemValue.copper} <span style={{color:'#D16630'}}>c</span></p>
+                            </div>
+                        : 
+                            "Error Loading Price"}
+                    </div>
+                </div>
             }
+            </div>
         </div>
+        
     )
 }
 

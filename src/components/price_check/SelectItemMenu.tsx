@@ -203,7 +203,7 @@ function SelectItemMenu ({handleItemSelected} : SelectItemMenuProps) {
     const [generation, setGeneration] = useState<number | null>(null)
 
     return (
-        <div className="pcItemCardContainer">
+        <div className="pcItemCardContainer pcCardContainer">
             {generation ? 
                 <div className="pcLegendaryListContainer"> 
                     {generation == 1 ?
