@@ -16,6 +16,25 @@
     background-color: var(--off-white);
 }
 
+.pcItemDisplayContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+
+    width: 100%;
+    height: 100%;
+    background-color: var(--accent-colour);
+    color: var(--off-white);
+}
+
+.pcItemValueContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
 .pcClickable:hover {
     cursor: pointer;
     color: var(--off-white);
@@ -57,7 +76,6 @@
 .pcLegendaryListItemName {
     display: flex;
     align-items: center;
-    margin: 0;
     flex-grow: 1;
 }
 
@@ -105,6 +123,27 @@
     .pcPlusIcon {
         width: 150px;
     }
+
+    .pcItemDisplayItemName {
+        text-align: center;
+        font-size: 30pt;
+    }
+    
+    .pcItemDisplayPercentage {
+        font-size: 42pt;
+    }
+
+    .pcItemDisplayValueGold {
+        font-size: xx-large;
+    }
+    
+    .pcItemDisplayValueSilver {
+        font-size: x-large;
+    }
+    
+    .pcItemDisplayValueCopper {
+        font-size: large;
+    }
   }
   
   @media screen and (max-width: 600px) {
@@ -124,5 +163,26 @@
 
     .pcPlusIcon {
         width: 100px;
+    }
+
+    .pcItemDisplayItemName {
+        text-align: center;
+        font-size: 18pt;
+    }
+    
+    .pcItemDisplayPercentage {
+        font-size: 30pt;
+    }
+
+    .pcItemDisplayValueGold {
+        font-size: large;
+    }
+    
+    .pcItemDisplayValueSilver {
+        font-size: medium;
+    }
+    
+    .pcItemDisplayValueCopper {
+        font-size: small;
     }
   }
