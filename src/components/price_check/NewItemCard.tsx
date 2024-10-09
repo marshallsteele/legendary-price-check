@@ -1,4 +1,5 @@
-import plusCircle from "/PlusCircle.svg"
+import { faCirclePlus } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface NewItemCardProps {
     cardClicked: () => void
@@ -11,7 +12,7 @@ interface NewItemCardProps {
 function NewItemCard ({ cardClicked }: NewItemCardProps) {
     return (
         <div onClick={cardClicked} className="pcItemCardContainer pcCardContainer pcClickable">
-            <img className="pcPlusIcon" src={plusCircle} alt="Plus Icon" />
+            <FontAwesomeIcon size="6x" icon={faCirclePlus} />
         </div>
     )
 }
