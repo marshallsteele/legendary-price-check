@@ -56,22 +56,32 @@ function ItemDisplay ({ handleCloseItemCard, itemId, itemName }: ItemDisplayProp
             })
     }
 
+    function handlePercentageChange(event:React.FormEvent<HTMLInputElement>) {
+        setPricePercentage(parseInt((event.target as HTMLInputElement).value))
+    }
+
     useEffect(() => {
         handleFetchAPIData(itemId);
     }, []);
 
     useEffect(() => {
         if (tPPrices) setItemValue(calculateItemValue(tPPrices.sells.unit_price * (pricePercentage / 100)));
-    }, [tPPrices]);
+    }, [tPPrices, pricePercentage]);
 
     return (
-        <div onClick={handleCloseItemCard} className="pcItemCardContainer">
+        <div className="pcItemCardContainer">
             { isLoading ?
                 <h2>Loading</h2>
                 :
                     <div className="pcItemDisplayContainer">
                         <h2 className="pcItemDisplayItemName">{itemName}</h2>
                         <p className="pcItemDisplayPercentage">{pricePercentage}%</p>
+                        <div>
+                            <input className="percentageSlider" 
+                            type="range" min="0" max="100" value={pricePercentage} step="1" 
+                            onInput={handlePercentageChange}
+                            onChange={handlePercentageChange}/>
+                        </div>
                         <div>
                             { itemValue ?  
                                 <div className="pcItemValueContainer">

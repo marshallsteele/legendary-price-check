@@ -105,6 +105,12 @@
     font-size: 75pt;
 }
 
+.percentageSlider {
+    appearance: none;
+    width: 100%;
+    background-color: var(--off-white);
+}
+
 @media screen and (min-width: 601px) {
     .pcItemCardContainer {
         width: 300px;
