@@ -1,3 +1,5 @@
+import { faRotate, faXmark } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { useEffect, useState } from "react"
 
 interface ItemDisplayProps {
@@ -89,8 +91,8 @@ function ItemDisplay ({ handleCloseItemCard, itemId, itemName }: ItemDisplayProp
                 :
                 <div className="pcItemDisplayContainer">
                     <div className="pcItemDisplayButtonsContainer">
-                        <button onClick={() => handleFetchAPIData(itemId)} className="pcItemDisplayButton">R</button>
-                        <button onClick={handleCloseItemCard} className="pcItemDisplayButton">X</button>
+                        <FontAwesomeIcon size="2x" className="pcItemDisplayButton pcClickable" onClick={() => handleFetchAPIData(itemId)} icon={faRotate} />
+                        <FontAwesomeIcon size="2x" className="pcItemDisplayButton pcClickable" onClick={handleCloseItemCard} icon={faXmark} />
                     </div>
                     <h2 className="pcItemDisplayItemName">{itemName}</h2>
                     <p className="pcItemDisplayPercentage">{pricePercentage}%</p>
