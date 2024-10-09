@@ -76,12 +76,11 @@ function ItemDisplay ({ handleCloseItemCard, itemId, itemName }: ItemDisplayProp
                     <div className="pcItemDisplayContainer">
                         <h2 className="pcItemDisplayItemName">{itemName}</h2>
                         <p className="pcItemDisplayPercentage">{pricePercentage}%</p>
-                        <div>
-                            <input className="percentageSlider" 
-                            type="range" min="0" max="100" value={pricePercentage} step="1" 
-                            onInput={handlePercentageChange}
-                            onChange={handlePercentageChange}/>
-                        </div>
+                        <input className="percentageSlider" 
+                        type="range" min="0" max="100" value={pricePercentage} step="1" 
+                        onInput={handlePercentageChange}
+                        onChange={handlePercentageChange}/>
+                        
                         <div>
                             { itemValue ?  
                                 <div className="pcItemValueContainer">
