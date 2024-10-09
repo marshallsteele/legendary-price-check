@@ -70,7 +70,7 @@ function ItemDisplay ({ handleCloseItemCard, itemId, itemName }: ItemDisplayProp
 
     return (
         <div className="pcCardContainer">
-            <div className="pcCardTabsContainer">
+            <div style={{display:"none"}} className="pcCardTabsContainer">
                 <div className="pcCardTab active">
                     Depth: 1
                 </div>
